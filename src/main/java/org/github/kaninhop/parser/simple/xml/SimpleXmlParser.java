@@ -26,14 +26,13 @@ public class SimpleXmlParser extends AbstractParser<SimpleXmlModel> {
     protected SimpleXmlModel parseData() {
         final File xmlFile = new File(getClass().getResource(fileName).getFile());
 
-        SimpleXmlModel defaultXmlModel = null;
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(SimpleXmlModel.class);
-            defaultXmlModel = (SimpleXmlModel) jaxbContext.createUnmarshaller().unmarshal(xmlFile);
+            return (SimpleXmlModel) jaxbContext.createUnmarshaller().unmarshal(xmlFile);
         } catch (JAXBException e) {
             logger.error("Can't parse data", e);
         }
-        return defaultXmlModel;
+        return null;
     }
 
     @Override

@@ -3,10 +3,10 @@ package org.github.kaninhop.jcr;
 import nl.openweb.jcr.InMemoryJcrRepository;
 import org.github.kaninhop.parser.AbstractParser;
 import org.github.kaninhop.parser.simple.xml.SimpleXmlParser;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.jcr.*;
 import javax.jcr.query.Query;
@@ -17,8 +17,8 @@ import java.net.URISyntaxException;
 
 import static javax.jcr.query.Query.JCR_SQL2;
 import static org.github.kaninhop.Constants.ADMIN_CREDENTIALS;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class JCRRepoDataImportTest {
 
@@ -54,14 +54,14 @@ public class JCRRepoDataImportTest {
 
     private static InMemoryJcrRepository repository;
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() throws RepositoryException, IOException, URISyntaxException {
         JCRRepoDataImport dataImport = new JCRRepoDataImport();
         AbstractParser parser = new SimpleXmlParser("/simple/test-content.xml");
         repository = dataImport.createRepositoryFromModel(parser.getModel());
     }
 
-    @Before
+    @BeforeEach
     public void before() {    }
 
     @Test
@@ -128,7 +128,7 @@ public class JCRRepoDataImportTest {
         assertEquals(THEME_PROPERTY_VALUE, node3.getProperties(THEME_PROPERTY_NAME).nextProperty().getString());
     }
 
-    @AfterClass
+    @AfterAll
     public static void afterClass() {
         repository.close();
     }

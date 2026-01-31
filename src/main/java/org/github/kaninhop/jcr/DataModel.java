@@ -1,6 +1,5 @@
 package org.github.kaninhop.jcr;
 
-import com.google.common.base.Strings;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -56,7 +55,7 @@ public class DataModel {
              * @return true if this is property, false otherwise
              */
             public boolean isProperty() {
-                return !Strings.isNullOrEmpty(value);
+                return value != null && !value.isEmpty();
             }
         }
     }

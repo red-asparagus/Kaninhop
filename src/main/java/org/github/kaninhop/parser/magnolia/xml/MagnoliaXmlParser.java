@@ -1,6 +1,5 @@
 package org.github.kaninhop.parser.magnolia.xml;
 
-import com.google.common.io.Files;
 import org.github.kaninhop.Constants;
 import org.github.kaninhop.parser.AbstractParser;
 import org.github.kaninhop.parser.IConverter;
@@ -12,7 +11,8 @@ import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
-import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * Parser for Magnolia CMS export XML
@@ -36,10 +36,11 @@ public class MagnoliaXmlParser extends AbstractParser<MagnoliaXmlModel> {
     @Override
     protected MagnoliaXmlModel parseData() {
         final File xmlFile = new File(getClass().getResource(fileName).getFile());
+        Path path = xmlFile.toPath();
 
         String dataXml = "";
         try {
-            dataXml = Files.toString(xmlFile, Charset.forName("UTF-8"));
+            dataXml = Files.readString(path);
         } catch (IOException e) {
             logger.error("", e);
         }

@@ -3,7 +3,7 @@ package org.github.kaninhop.parser.magnolia.yaml;
 import org.github.kaninhop.jcr.DataModel;
 import org.github.kaninhop.parser.AbstractParser;
 import org.github.kaninhop.parser.magnolia.MagnoliaParserTestBase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MagnoliaYamlParserTest extends MagnoliaParserTestBase {
 
