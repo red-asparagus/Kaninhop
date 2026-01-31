@@ -2,7 +2,7 @@ package org.github.kaninhop.parser.simple;
 
 import org.github.kaninhop.jcr.DataModel;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public abstract class SimpleParserTestBase {
 

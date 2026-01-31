@@ -3,7 +3,7 @@ package org.github.kaninhop.parser.simple.yaml;
 import org.github.kaninhop.jcr.DataModel;
 import org.github.kaninhop.parser.AbstractParser;
 import org.github.kaninhop.parser.simple.SimpleParserTestBase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SimpleYamlParserTest extends SimpleParserTestBase {
 

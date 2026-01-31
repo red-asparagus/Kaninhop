@@ -1,6 +1,5 @@
 package org.github.kaninhop.parser.magnolia.yaml;
 
-import com.google.common.io.Files;
 import org.github.kaninhop.Constants;
 import org.github.kaninhop.parser.AbstractParser;
 import org.github.kaninhop.parser.IConverter;
@@ -10,7 +9,8 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Map;
 
 /**
@@ -35,11 +35,13 @@ public class MagnoliaYamlParser extends AbstractParser<MagnoliaYamlModel>{
     @Override
     protected MagnoliaYamlModel parseData() {
         final File yamlFile = new File(getClass().getResource(fileName).getFile());
+        Path path = yamlFile.toPath();
+
         final Yaml yaml = new Yaml();
 
         String dataXml = "";
         try {
-            dataXml = Files.toString(yamlFile, Charset.forName("UTF-8"));
+            dataXml = Files.readString(path);
         } catch (IOException e) {
             logger.error("", e);
         }
